@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel = "stylesheet" href="/css/lightbox.css">
+    <title>DCU</title>
+  </head>
+
+  <body>
+    <%- include('../header.html')%>
+
+    <div style="width: 100%; height: 50%;">
+      <div style="margin-top: 50px">
+        <h1 style="font-size: 25px">갤러리</h1>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-4">
+      
+      
+      
+      <% for(var i=0; i<row.length; i++){%>
+        <div class="card" style="margin-bottom: 150px;" >
+        <div class="col mb-4">
+            <a href="/image/<%=row[i].file%>" data-lightbox="img" > <img src="/image/<%=row[i].file%>" class="card-img-top" alt="..." style="width: 200px; height: 150px; " /></a>
+            <div class="card-body">
+              <h5 class="card-title">
+            </h5>
+            <p class="card-text">
+                <%=row[i].title%>
+                <a href="gallery/del/<%=row[i]._id%>" class=" btn btn-danger btn-sm" id="delete">X</a>
+               
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <% } %>
+
+
+     
+    </div>
+    
+
+
+    <%- include('../footer.html')%>
+
+    <script src="/js/lightbox-plus-jquery.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+        $('.delete').click(function(){
+            $.ajax({
+                url : '/del',
+                method : 'DELETE',
+                data : {_id:1},              
+            })
+        })
+    </script>
+  </body>
+</html>
