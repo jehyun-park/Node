@@ -10,3 +10,4 @@ npm install multer // 파일 업로드시켜주는 패키지
 npm init //서버만들기
 node [서버이름] //서버시작
 nodemon [서버이름] //서버자동시작
+
